@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
+from fastapi.middleware.cors import CORSMiddleware
+
 
 class TodoItem(BaseModel):
     title: str
@@ -10,6 +12,14 @@ class TodoItem(BaseModel):
 todo_list : list[TodoItem] = []
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 開發環境可以用 "*"，生產環境要指定具體域名
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def root():
