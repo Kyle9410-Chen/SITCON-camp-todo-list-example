@@ -24,17 +24,17 @@ app.add_middleware(
 def root():
     return { "message" : "Hello world" }
 
-@app.get("/todos")
-def get_todos():
+@app.get("/todos") 
+def get_todos() -> list[TodoItem]:
     return todo_list
 
 @app.post("/todos")
-def add_todo(todo: TodoItem):
+def add_todo(todo: TodoItem) -> TodoItem:
     todo_list.append(todo)
     return todo
 
 @app.put("/todo/{id}")
-def update_todo(id: int, todo: TodoItem):
+def update_todo(id: int, todo: TodoItem) -> TodoItem:
     if id < 0 or id >= len(todo_list):
         raise HTTPException(
             status_code=404,
@@ -54,7 +54,7 @@ def delete_todo(id: int):
     return
 
 @app.get("/todo/{id}")
-def get_todo(id: int):
+def get_todo(id: int) -> TodoItem:
     if id < 0 or id >= len(todo_list):
         raise HTTPException(
             status_code=404,
