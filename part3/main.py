@@ -27,28 +27,19 @@ def add_todo(todo: TodoItem):
 @app.put("/todo/{id}")
 def update_todo(id: int, todo: TodoItem):
     if id < 0 or id >= len(todo_list):
-        raise HTTPException(
-            status_code=404,
-            detail="Todo item not found"
-            )
+        return { "error" : "Todo item not found" }
     todo_list[id] = todo
     return todo
 
 @app.delete("/todo/{id}")
 def delete_todo(id: int):
     if id < 0 or id >= len(todo_list):
-        raise HTTPException(
-            status_code=404,
-            detail="Todo item not found"
-            )
+        return { "error" : "Todo item not found" }
     todo_list.pop(id)
     return
 
 @app.get("/todo/{id}")
 def get_todo(id: int):
     if id < 0 or id >= len(todo_list):
-        raise HTTPException(
-            status_code=404,
-            detail="Todo item not found"
-            )
+        return { "error" : "Todo item not found" }
     return todo_list[id]

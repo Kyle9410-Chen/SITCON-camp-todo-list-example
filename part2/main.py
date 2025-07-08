@@ -33,7 +33,3 @@ def update_todo(id: int, todo: TodoItem) -> TodoItem:
 def delete_todo(id: int):
     todo_list.pop(id)
     return
-
-@app.get("/todo/{id}")
-def get_todo(id: int) -> TodoItem:
-    return todo_list[id]
