@@ -34,4 +34,6 @@ def delete_todo(id: int):
     todo_list.pop(id)
     return
 
-# 試著寫出拿特定 id 待辦事項 Endpoint
+@app.get("/todo/{id}")
+def get_todo(id: int):
+    return todo_list[id]
