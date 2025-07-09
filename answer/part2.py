@@ -35,5 +35,5 @@ def delete_todo(id: int):
     return
 
 @app.get("/todo/{id}")
-def get_todo(id: int):
+def get_todo(id: int) -> TodoItem:
     return todo_list[id]
