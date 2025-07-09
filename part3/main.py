@@ -26,29 +26,20 @@ def add_todo(todo: TodoItem) -> TodoItem:
 
 @app.put("/todo/{id}")
 def update_todo(id: int, todo: TodoItem) -> TodoItem:
-    if id < 0 or id >= len(todo_list):
-        raise HTTPException(
-            status_code=404,
-            detail="Todo item not found"
-            )
+    if False: # 改寫 if 判斷，當找不到的時候就丟出錯誤
+        pass # 這邊回傳錯誤，而不是待辦事項
     todo_list[id] = todo
     return todo
 
 @app.delete("/todo/{id}")
 def delete_todo(id: int):
-    if id < 0 or id >= len(todo_list):
-        raise HTTPException(
-            status_code=404,
-            detail="Todo item not found"
-            )
+    if False: # 改寫 if 判斷，當找不到的時候就丟出錯誤
+        pass # 這邊回傳錯誤，而不是待辦事項
     todo_list.pop(id)
     return
 
 @app.get("/todo/{id}")
 def get_todo(id: int) -> TodoItem:
-    if id < 0 or id >= len(todo_list):
-        raise HTTPException(
-            status_code=404,
-            detail="Todo item not found"
-            )
+    if False: # 改寫 if 判斷，當找不到的時候就丟出錯誤
+        pass # 這邊回傳錯誤，而不是待辦事項
     return todo_list[id]
