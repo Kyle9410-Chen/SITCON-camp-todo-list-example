@@ -29,18 +29,15 @@ def load_data():
             for item in data:
                 todo_list.append(TodoItem(**item))
         return todo_list
-    except:
+    except FileNotFoundError:
         return []
 
 def save_data(todo_list: list[TodoItem]):
-    try:
-        data = []
-        with open("data.json", "w") as f:
-            for item in todo_list:
-                data.append(item.dict())
-            json.dump(data, f, ensure_ascii=False, indent=4)
-    except Exception as e:
-        print(e)
+    data = []
+    with open("data.json", "w") as f:
+        for item in todo_list:
+            data.append(item.dict())
+        json.dump(data, f, ensure_ascii=False, indent=4)
 
 
 @app.get("/")
