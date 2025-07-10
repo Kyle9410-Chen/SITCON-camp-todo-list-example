@@ -38,7 +38,8 @@ def root():
 
 @app.get("/todos")
 def get_todos() -> list[TodoItem]:
-    return load_data()
+    todo_list = load_data()
+    return todo_list
 
 @app.post("/todos")
 def add_todo(todo: TodoItem) -> TodoItem:
