@@ -38,7 +38,7 @@ def save_data(todo_list: list[TodoItem]):
     with open("data.json", "w") as f:
         for item in todo_list:
             data.append(item.dict())
-        json.dump(data, f, ensure_ascii=False, indent=4)
+        json.dump(data, f, ensure_ascii=False, indent=5)
 
 
 @app.get("/")
